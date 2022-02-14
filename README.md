@@ -16,7 +16,7 @@ See [explanation](#explanation) at the bottom of the document for more informati
 - [Spawning](#spawning)
   - [Mob switch isn't working](#mob-switch-isnt-working)
 - [Villagers](#villagers)
-  - [Prices increases substantially after one trade](#trade-demand) 
+  - [Prices increase substantially after one trade](#trade-demand) 
   - [Zombie villager cures only discount once](#curing-discount)
 - [Misc.](#misc)
   - [Bedrock isn't breaking](#bedrock)
@@ -124,7 +124,7 @@ you want to disable mob spawns with your mob switch, right?_
 
 <a name="trade-demand"/>
 
-#### Prices increases substantially after one trade
+#### Prices increase substantially after one trade
 When villagers restock, demand is updated for all trade offers. Demand decreases the less a
 player purchases a particular offer, however, this decrease has no lower bounds and will
 continuously decrease with every restock towards negative infinity. This issue is tracked by
