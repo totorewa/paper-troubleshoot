@@ -16,6 +16,7 @@ See [explanation](#explanation) at the bottom of the document for more informati
 - [Spawning](#spawning)
   - [Mob switch isn't working](#mob-switch-isnt-working)
 - [Villagers](#villagers)
+  - [Prices increases substantially after one trade](#trade-demand) 
   - [Zombie villager cures only discount once](#curing-discount)
 - [Misc.](#misc)
   - [Bedrock isn't breaking](#bedrock)
@@ -120,6 +121,35 @@ may occur and you might experience a slow down in mob farms. But you're enabling
 you want to disable mob spawns with your mob switch, right?_
 
 ### Villagers
+
+<a name="trade-demand"/>
+
+#### Prices increases substantially after one trade
+When villagers restock, demand is updated for all trade offers. Demand decreases the less a
+player purchases a particular offer, however, this decrease has no lower bounds and will
+continuously decrease with every restock towards negative infinity. This issue is tracked by
+[MC-163962](https://bugs.mojang.com/browse/MC-163962).
+
+In vanilla, the longer you don't trade, the further in to the negatives demand goes, and the
+more you need to trade before demand goes back in to the positives and prices increase. The
+dramatic price increase does occur in vanilla but it takes significantly longer for it to 
+occur.
+
+Paper patches this in [0436-Fix-villager-trading-demand-MC-163962.patch](https://github.com/PaperMC/Paper/blob/a8f2d67/patches/server/0436-Fix-villager-trading-demand-MC-163962.patch)
+where a lower bound of zero is enforced. No configuration exists in Paper to disable this fix
+or configure this lower bound.
+
+Purpur, a fork of Paper, offers a configuration option for this lower bound. In purpur.yml
+change the following:
+```yaml
+mobs:
+  villager:
+    minimum-demand: 0
+```
+
+Configure this to a value below zero. A good starting value might be `-100`. This should allow
+the player to trade for around 4-5 in-game days before the price starts increasing. Adjust
+lower if necessary.
 
 <a name="curing-discount"/>
 
