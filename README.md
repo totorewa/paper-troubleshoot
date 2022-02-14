@@ -139,7 +139,7 @@ Paper patches this in [0436-Fix-villager-trading-demand-MC-163962.patch](https:/
 where a lower bound of zero is enforced. No configuration exists in Paper to disable this fix
 or configure this lower bound.
 
-Purpur, a fork of Paper, offers a configuration option for this lower bound. In purpur.yml
+Purpur, a fork of Paper, offers a configuration option for this lower bound. In `purpur.yml`
 change the following:
 ```yaml
 mobs:
